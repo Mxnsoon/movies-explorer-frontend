@@ -44,3 +44,16 @@
 .portfolio__link-icon {
   margin: 0 2px 0 0;
 }
+
+@media screen and (max-width: 430px) {
+  .portfolio {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .portfolio__list-item {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

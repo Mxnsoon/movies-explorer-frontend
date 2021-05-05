@@ -43,8 +43,15 @@
   border-radius: 5px;
   flex-grow: 1;
   display: block;
-  width: 98%;
+  width: 92%;
 }
+
+.searchForm__input:focus {
+  background-color: white;
+  outline: 1px solid #000;
+}
+
+.searchForm__input:focus .searchForm__form { background-color: #fff; }
 
 .searchForm__button {
   font-style: normal;
@@ -114,4 +121,10 @@
   height: 1px;
   margin: 39px 0 10px 0;
   background-color: #e8e8e8;
+}
+
+@media screen and (max-width: 400px) {
+  .searchForm__form {
+    width: 212px;
+  }
 }

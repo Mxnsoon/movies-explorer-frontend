@@ -12,24 +12,28 @@ function MoviesCardList() {
       <ul className="movies-cards">
         <li className="movies-cards__card">
           <MoviesCard
+            isSaved={true}
             src={movie1}
             name="33 слова о дизайне"
             />
         </li>
         <li className="movies-cards__card">
           <MoviesCard
+            isSaved={false}
             src={movie2}
             name="Киноальманах «100 лет дизайна»"
             />
         </li>
         <li className="movies-cards__card">
           <MoviesCard
+            isSaved={true}
             src={movie3}
             name="В погоне за Бенкси"
             />
         </li>
         <li className="movies-cards__card">
           <MoviesCard
+          isSaved={false}
           src={movie4}
           name="Баския: Взрыв реальности"
           />
