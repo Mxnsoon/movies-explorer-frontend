@@ -1,29 +1,23 @@
-import { Link, useLocation } from "react-router-dom";
-import accountPic from "../../images/user-icon.svg";
+import React from 'react';
+import './PopupMenu.css';
+import successLogo from '../../images/successimage.png';
+import failLogo from '../../images/failimage.png';
 
-import "./PopupMenu.css";
-
-function PopupMenu() {
-  const location = useLocation().pathname;
-
-  function handleClick() {
-    document.querySelector(".popup").classList.remove("popup_opened");
-  }
-
+function PopupMenu({ isOpen, onClose, isolatePopup, status, infoMessage }) {
   return (
-    <nav className="popup">
-      <div className="popup__container">
-        <Link to="/" className="popup__link" onClick={handleClick}>Главная</Link>
-        <Link to="/movies" className={`popup__link ${location === "/movies" && "popup__link_current"}`} onClick={handleClick}>Фильмы</Link>
-        <Link to="/saved-movies" className={`popup__link ${location === "/saved-movies" && "popup__link_current"}`} onClick={handleClick}>Сохранённые фильмы</Link>
-        <Link to="/profile" className="popup__link-account" onClick={handleClick}>
-            <span className="popup__link-text">Аккаунт</span>
-            <img className="popup__pic" alt="Аккаунт" src={accountPic}></img>
-        </Link>
-        <button className="popup__btn-close" onClick={handleClick} />
+    <div className={`popup ${isOpen && 'popup_opened'}`} id='popup__info' onClick={onClose}>
+      <div className='popup__container' onClick={isolatePopup}>
+        <button className='popup__button-close' id='info__button-close' type='button' onClick={onClose} />
+          {status
+            ? <img src={successLogo} alt='Успешно' className='popup__status' />
+            : <img src={failLogo} alt='Ошибка' className='popup__status' />
+          }
+        <h2 className='popup__status-title'>
+          {infoMessage}
+        </h2>
       </div>
-    </nav>
-  );
+    </div>
+  )
 }
 
 export default PopupMenu;

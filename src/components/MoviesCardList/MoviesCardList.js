@@ -1,45 +1,82 @@
-import MoviesCard from '../MoviesCard/MoviesCard';
-
-import movie1 from '../../images/movie-card-image-1.png';
-import movie2 from '../../images/movie-card-image-2.png';
-import movie3 from '../../images/movie-card-image-3.png';
-import movie4 from '../../images/movie-card-image-4.png';
-
+import React from 'react';
 import './MoviesCardList.css';
+import { useLocation } from 'react-router-dom';
+import MoviesCard from '../MoviesCard/MoviesCard';
+import MoreButton from '../MoreButton/MoreButton';
 
-function MoviesCardList() {
-    return (
-      <ul className="movies-cards">
-        <li className="movies-cards__card">
-          <MoviesCard
-            isSaved={true}
-            src={movie1}
-            name="33 слова о дизайне"
-            />
-        </li>
-        <li className="movies-cards__card">
-          <MoviesCard
-            isSaved={false}
-            src={movie2}
-            name="Киноальманах «100 лет дизайна»"
-            />
-        </li>
-        <li className="movies-cards__card">
-          <MoviesCard
-            isSaved={true}
-            src={movie3}
-            name="В погоне за Бенкси"
-            />
-        </li>
-        <li className="movies-cards__card">
-          <MoviesCard
-          isSaved={false}
-          src={movie4}
-          name="Баския: Взрыв реальности"
-          />
-        </li>
-      </ul>
-    )
-};
+function MoviesCardList({movies, windowWidth, handleSaveMovie, handleDeleteMovie, moviesMessage}) {
+  const [renderedMoviesList, setRenderedMoviesList] = React.useState([]);
+  const [isButtonActive, setIsButtonActive] = React.useState(false);
+  const [renderedCardsCount, setRenderedCardsCount] = React.useState(12);
+  const [addedCardsCount, setAddedCardsCount] = React.useState(0);
+
+  const location = useLocation().pathname;
+
+  function cardsCount() {
+    if (windowWidth >= 1100) {
+      setRenderedCardsCount(12);
+      setAddedCardsCount(3);
+    } else if (windowWidth < 1100 && windowWidth > 600) {
+      setRenderedCardsCount(8);
+      setAddedCardsCount(2);
+    } else {
+      setRenderedCardsCount(5);
+      setAddedCardsCount(2);
+    }
+  }
+
+  function handleMoreClick() {
+    setRenderedMoviesList(movies.slice(0, renderedMoviesList.length + addedCardsCount));
+    if (renderedMoviesList.length >= movies.length - addedCardsCount) {
+      setIsButtonActive(false);
+    }
+  }
+
+  React.useEffect(() => {
+    cardsCount();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [windowWidth]);
+
+  React.useEffect(() => {
+    if (location === '/movies') {
+      setRenderedMoviesList(movies.slice(0, renderedCardsCount));
+      if (movies.length <= renderedCardsCount) {
+        setIsButtonActive(false);
+      } else {
+        setIsButtonActive(true);
+      }
+    } else {
+      setRenderedMoviesList(movies);
+      setIsButtonActive(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [movies]);
+
+
+
+  return (
+    <>
+      <section className='cards'>
+        {movies.length === 0
+          ? <p className='cards__not-found'>{moviesMessage}</p>
+          : <ul className='cards__list'>
+              {renderedMoviesList.map(data => {
+                return (
+                  <MoviesCard
+                    key={location === '/movies' ? data.id : data._id}
+                    data={data}
+                    handleSaveMovie={handleSaveMovie}
+                    handleDeleteMovie={handleDeleteMovie}
+                  />
+                )
+              })
+            }
+        </ul>
+        }
+      </section>
+      <MoreButton onMoreClick={handleMoreClick} isButtonActive={isButtonActive} />
+    </>
+  )
+}
 
 export default MoviesCardList;

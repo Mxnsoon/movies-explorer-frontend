@@ -1,8 +1,12 @@
+import { useLocation } from "react-router";
 import "./Footer.css";
 
 function Footer() {
+
+    const { pathname } = useLocation();
+
     return (
-        <footer className="footer_visible">
+        <footer className={`footer ${(pathname === "/" || pathname === "/saved-movies" || pathname === "/movies") ? "footer_visible" : ''}`}>
             <p className="footer__description">Учебный проект Яндекс.Практикум х BeatFilm.</p>
             <div className="footer__container">
                 <p className="footer__copyright">&copy; 2021</p>

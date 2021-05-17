@@ -1,16 +1,13 @@
 import './NotFound.css';
+import { Link } from 'react-router-dom';
 
-function NotFound(props) {
-
-  function goBack() {
-    props.history.goBack();
-  }
+function NotFound() {
 
   return (
     <section className="not-found">
       <h3 className="not-found__title">404</h3>
       <p className="not-found__subtitle">Страница не найдена</p>
-      <button onClick={goBack} className="not-found__link">Назад</button>
+      <Link to='/' className="not-found__link">Назад</Link>
     </section>
   );
 }

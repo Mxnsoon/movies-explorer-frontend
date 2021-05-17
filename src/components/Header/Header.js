@@ -1,45 +1,29 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import logo from '../../images/logo.svg';
+import Navigation from '../Navigation/Navigation';
 import './Header.css';
-import logo from "../../images/logo.svg";
-import userLogo from '../../images/user-icon.svg'
 
-function Header() {
+function Header({loggedIn, windowWidth}) {
+  const history = useHistory();
 
-    function handleClick() {
-        // Временно, чтобы работало открытие меню
-        document.querySelector(".popup").classList.add("popup_opened");
-      }
-
-    return (
-      <header className="header">
-        <Link to="/">
-          <div className="header__logo">
-            <img alt="лого" src={logo} />
-          </div>
-        </Link>
-        <div className="header__flex-container">
-        <div className="header__menu">
-          <div className="header__container">
-            <Link to="/movies" className="header__account">
-              Фильмы
-            </Link>
-            <Link to="/saved-movies" className="header__account">
-              Сохраненные фильмы
-            </Link>
-          </div>
-        </div>
-        <div className="header__container">
-          <Link to="/profile" className="header__account">
-            Аккаунт
-          </Link>
-          <Link to="/profile" className="header__link">
-            <img src={userLogo} alt="иконка" className="header__icon" />
-          </Link>
-          </div>
-          <button className="header__menu-button" onClick={handleClick} />
-        </div>
-      </header>
-    );
+  function handleLogoClick() {
+    history.push('/');
   }
+
+  const pathname = useLocation().pathname;
+
+  return (
+    <header className={pathname === '/' ? 'header' : 'header header_white'}>
+      <div className='header__container'>
+        <img className='header__logo' src={logo} alt='Логотип сайта' onClick={handleLogoClick} />
+        <Navigation
+          loggedIn={loggedIn}
+          windowWidth={windowWidth}
+        />
+      </div>
+    </header>
+  )
+}
 
 export default Header;
