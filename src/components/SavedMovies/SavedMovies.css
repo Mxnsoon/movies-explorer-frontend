@@ -1,9 +1,5 @@
 .saved-movies {
-  box-sizing: border-box;
   width: 100%;
-  min-height: 543px;
-  padding: 70px 70px 80px;
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;

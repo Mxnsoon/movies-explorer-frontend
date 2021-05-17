@@ -1,0 +1,31 @@
+.films__menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+  
+.films__menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+}
+  
+.films__menu-item:last-child {
+  margin: 0;
+}
+  
+.films__link {
+  color: #000;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  text-decoration: none;
+  font-weight: 500;
+}
+  
+.films__link:hover {
+  font-weight: 500;
+}

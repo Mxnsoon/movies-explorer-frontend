@@ -28,7 +28,8 @@
   margin: 184px 0 0;
   font-size: 14px;
   line-height: 17px;
-  border: none;
+  text-decoration: none;
+  color: #000;
   background-color: transparent;
 }
   

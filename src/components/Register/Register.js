@@ -1,36 +1,21 @@
-import { Link } from 'react-router-dom';
-import '../Login/Login.css';
-import mainLogo from "../../images/logo.svg"
+import React from 'react';
+import './Register.css';
+import WelcomeScreen from '../WelcomeScreen/WelcomeScreen';
+import AuthForm from '../AuthForm/AuthForm';
 
-function Register() {
+function Register({onRegister, isLoading}) {
   return (
-    <div className="login">
-      <form className="login__form" type="submit">
-      <Link to="/">
-        <img alt="лого" src={mainLogo} className="login__logo" /></Link>
-        <p className="login__header">Добро пожаловать!</p>
-        <label htmlFor="name">
-          <p className="login__label">Имя</p>
-        </label>
-        <input name="name" className="login__input" type="email" required />
-        <span className="login__error login__error_is-active" id="description-error" />
-        <label htmlFor="email">
-          <p className="login__label">E-mail</p>
-        </label>
-        <input name="email" className="login__input" type="email" required />
-        <span className="login__error login__error_is-active" id="description-error" />
-        <label htmlFor="password">
-          <p className="login__label">Пароль</p>
-        </label>
-        <input name="password" className="login__input" type="password" required />
-        <span className="login__error login__error_is-active" id="description-error" />
-        <button type="submit" className="login__button">Зарегистрироваться</button>
-        <div className="login__sign-in">Уже зарегистрированы?
-          <Link to="/signin" className="login__link">Войти</Link>
-        </div>
-      </form>
-    </div>
-  );
+    <main className='register'>
+      <WelcomeScreen title='Добро пожаловать!' />
+      <AuthForm
+        buttonText={isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
+        descriptionMessage='Уже зарегистрированы?'
+        formId='register'
+        linkMessage='Войти'
+        onRegister={onRegister}
+      />
+    </main>
+  )
 }
 
 export default Register;
