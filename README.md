@@ -33,6 +33,8 @@
   <summary>Под спойлером показаны картинки проекта</summary>
   
 ![картинка](./src/images/1.png)
+![картинка](./src/images/1.png)
+![картинка](./src/images/1.png)
   
 </details>
 
