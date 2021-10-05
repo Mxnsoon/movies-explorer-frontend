@@ -134,5 +134,5 @@ getSavedMovies() {
 }
 
 export const mainApi = new MainApi({
-  baseUrl: 'https://api.mxnsoon.movies.nomoredomains.club',
+  baseUrl: /*'http://localhost:3001'*/ 'https://api.mxnsoon.movies.nomoredomains.club',
 });
