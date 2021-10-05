@@ -3,6 +3,17 @@
 Ссылка на сайт: https://mxnsoon.movies.nomoredomains.icu/
 Ссылка на бэкенд: https://api.mxnsoon.movies.nomoredomains.club/
 
+<details>
+  <summary>Под спойлером показаны картинки проекта</summary>
+  
+![картинка](./src/images/1.png)
+![картинка](./src/images/2.png)
+![картинка](./src/images/3.png)
+![картинка](./src/images/4.png)
+![картинка](./src/images/5.png)
+  
+</details>
+
 ## Обзор
 Проект Movies-explorer создан с помощью JavaScript, HTML, CSS, React, и самописного бэкенда.
 Это одностраничное приложение для поиска фильмов по базе данных Beats-film, где можно добавлять, удалять и смотреть трейлеры ваших любимых фильмов.
@@ -29,15 +40,5 @@
 - Локально запустить бэкенд командой npm start
 - Локально запустить фронтэнд командой npm start
 
-<details>
-  <summary>Под спойлером показаны картинки проекта</summary>
-  
-![картинка](./src/images/1.png)
-![картинка](./src/images/2.png)
-![картинка](./src/images/3.png)
-![картинка](./src/images/4.png)
-![картинка](./src/images/5.png)
-  
-</details>
 
 
